@@ -40,6 +40,11 @@ CROSS JOIN borrows;
 
 SELECT name, typeId FROM books WHERE pagecount > (SELECT AVG(pagecount) FROM books);
 
+WITH estudiantes AS (SELECT * FROM students)
+SELECT * FROM estudiantes WHERE studentId < 20
+UNION ALL
+SELECT * FROM estudiantes WHERE gender = 'Femenino'
+
 CREATE TABLE authorsBackUp(
 	[authorId] [int] IDENTITY(1,1) NOT NULL,
 	[name] [varchar](50) NULL,
@@ -50,3 +55,4 @@ DROP TABLE authorsBackUp;
 SELECT * INTO authorsBackUp FROM authors
 
 SELECT * FROM authorsBackUp
+
